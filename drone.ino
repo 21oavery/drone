@@ -1,9 +1,11 @@
+#include <math.h>
+
 const static int PIN_FOR_LEFT = 1;
 const static int PIN_FOR_RIGHT = 2;
 const static int PIN_BAK_LEFT = 3;
 const static int PIN_BAK_RIGHT = 4;
 
-#typedef unsigned char BYTE
+typedef unsigned char BYTE;
 
 struct motorState {
   BYTE mfl;
@@ -11,7 +13,7 @@ struct motorState {
   BYTE mbl;
   BYTE mbr;
   BYTE dirty;
-}
+};
 
 void writeMotors(struct motorState *state) {
   if (state->dirty) {
@@ -38,8 +40,9 @@ void loop() {
   // put your main code here, to run repeatedly:
   struct motorState state;
   setMotors(&state, 200, 200, 200, 200);
-  while (1) {
-    if (%cnt)
-    cnt++;
-  }
+  writeMotors(&state);
+  delay(5000);
+  setMotors(&state, 0, 0, 0, 0);
+  writeMotors(&state);
+  delay(5000);
 }
